@@ -2,13 +2,7 @@ import BaseService from './BaseService';
 
 const ENDPOINTS = {
   LOGIN: '/auth/login',
-  LOGIN_FB: 'auth/login-facebook',
-  LOGOUT: '/auth/logout',
-  SIGN_UP: '/users',
   RESET_PASSWORD: '/reset-password-request',
-  CONFIRM: '/users/confirm',
-  UPDATE_TIMEZONE: '/profile/:id',
-  UPDATE_DIFFERENCE: '/profile/difference/:id',
 };
 
 class AuthService extends BaseService {
@@ -37,7 +31,7 @@ class AuthService extends BaseService {
     }
   };
 
-  createSession = async user => {
+  createSession = async (user) => {
     try {
       localStorage.setItem('user', JSON.stringify(user));
 
@@ -57,7 +51,7 @@ class AuthService extends BaseService {
     this.api.removeHeaders(['Authorization']);
   };
 
-  login = async loginData => {
+  login = async (loginData) => {
     try {
       const { data } = await this.apiClient().post(ENDPOINTS.LOGIN, loginData);
       await this.createSession(data);
@@ -72,7 +66,7 @@ class AuthService extends BaseService {
     await this.destroySession();
   };
 
-  signup = async signUpData => {
+  signup = async (signUpData) => {
     let formData = new FormData();
     if (signUpData.picture) {
       let localUri = signUpData.picture.uri;
@@ -117,7 +111,7 @@ class AuthService extends BaseService {
     }
   };
 
-  updateUserInStorage = property => {
+  updateUserInStorage = (property) => {
     try {
       const user = localStorage.getItem('user');
       let jsonUser = JSON.parse(user);

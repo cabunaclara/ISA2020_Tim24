@@ -1,1 +1,13 @@
-{ "auth": { "username": "username", "password": "password" } }
+{
+  "auth": {
+    "email": "Email Address",
+    "password": "Password",
+    "signIn": "Sign In",
+    "dontHaveAnAccount": "Don't have an account? Sign Up"
+  },
+  "copyright": "ISA",
+  "errorMessages": {
+    "email": "Email Address must be an email",
+    "password": "Password must be at least 6 characters long"
+  }
+}
