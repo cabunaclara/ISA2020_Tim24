@@ -7,4 +7,7 @@ const selectDomain = (state) => state.user || reducers;
 const makeSelectEmailError = () =>
   createSelector(selectDomain, (substate) => substate.emailError);
 
-export { makeSelectEmailError };
+const makeSelectPasswordError = () =>
+  createSelector(selectDomain, (substate) => substate.passwordError);
+
+export { makeSelectEmailError, makeSelectPasswordError };

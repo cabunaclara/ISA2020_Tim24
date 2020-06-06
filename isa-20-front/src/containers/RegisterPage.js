@@ -44,7 +44,7 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
   const emailError = useSelector(makeSelectEmailError());
 
-  const handleLogIn = () => {
+  const handleRegister = () => {
     if (
       !validateEmail(email) &&
       !validatePassword(password) &&
@@ -111,14 +111,14 @@ const RegisterPage = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {i18n.t('auth.signIn')}
+            {i18n.t('auth.register')}
           </Typography>
           <form
             className={classes.form}
             noValidate
             onSubmit={(event) => {
               event.preventDefault();
-              handleLogIn();
+              handleRegister();
             }}
           >
             <TextField

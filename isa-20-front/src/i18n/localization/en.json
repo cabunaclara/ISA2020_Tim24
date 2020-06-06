@@ -1,6 +1,7 @@
 {
   "auth": {
     "email": "Email Address",
+    "oldPassword": "Old Password",
     "password": "Password",
     "signIn": "Sign In",
     "register": "Register",
@@ -18,8 +19,9 @@
   "copyright": "ISA",
   "errorMessages": {
     "emailTaken": "Email Address is already taken, please choose another one",
+    "wrongPassword": "Password is wrong, please enter the correct password",
     "email": "Email Address must be an email",
-    "password": "Password must be at least 6 characters long",
+    "password": "{{text}} must be at least 6 characters long",
     "confirmedPassword": "Password and confirmed password must be identical",
     "firstName": "First name must be at least 2 characters long",
     "lastName": "Last name must be at least 2 characters long",

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logInAction } from '../store/actions/authActions';
+import {
+  logInAction,
+  changePasswordAction,
+} from '../store/actions/authActions';
 import i18n from '../i18n/i18n';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -14,18 +17,29 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { validateEmail, validatePassword } from '../utils/validators';
+import {
+  validateEmail,
+  validatePassword,
+  validateConfirmPassword,
+} from '../utils/validators';
 import { PagePath } from '../utils/constants';
+import { makeSelectPasswordError } from '../store/selectors/userSelector';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const ChangePasswordPage = () => {
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const dispatch = useDispatch();
+  const passwordError = useSelector(makeSelectPasswordError());
 
-  const handleLogIn = () => {
-    if (!validateEmail(email) && !validatePassword(password))
-      dispatch(logInAction({ email, password }));
+  const handleChangePassword = () => {
+    if (
+      !validatePassword(oldPassword) &&
+      !validatePassword(newPassword) &&
+      !validateConfirmPassword(confirmPassword, newPassword)
+    )
+      dispatch(changePasswordAction({ oldPassword, newPassword }));
   };
 
   const Copyright = () => (
@@ -74,7 +88,7 @@ const LoginPage = () => {
             noValidate
             onSubmit={(event) => {
               event.preventDefault();
-              handleLogIn();
+              handleChangePassword();
             }}
           >
             <TextField
@@ -82,29 +96,45 @@ const LoginPage = () => {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label={i18n.t('auth.email')}
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
+              name="oldPassword"
+              label={i18n.t('auth.oldPassword')}
+              type="password"
+              id="oldPassword"
+              autoComplete="current-oldPassword"
+              value={oldPassword}
+              onChange={({ target }) => setOldPassword(target.value)}
             />
-            {validateEmail(email)}
+            {validatePassword(oldPassword, 'Old password')}
+            {'\n'}
+            {passwordError && i18n.t('errorMessages.wrongPassword')}
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password"
-              label={i18n.t('auth.password')}
+              name="newPassword"
+              label={i18n.t('auth.newPassword')}
               type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={({ target }) => setPassword(target.value)}
+              id="newPassword"
+              autoComplete="current-newPassword"
+              value={newPassword}
+              onChange={({ target }) => setNewPassword(target.value)}
             />
-            {validatePassword(password)}
+            {validatePassword(newPassword)}
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="confirmPassword"
+              label={i18n.t('auth.confirmPassword')}
+              type="password"
+              id="confirmPassword"
+              autoComplete="current-confirmPassword"
+              value={confirmPassword}
+              onChange={({ target }) => setConfirmPassword(target.value)}
+            />
+            {validateConfirmPassword(newPassword, confirmPassword)}
             <Button
               type="submit"
               fullWidth
@@ -133,4 +163,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ChangePasswordPage;

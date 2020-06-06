@@ -5,8 +5,9 @@ import {
   PagePath,
   emailTaken,
   createdUserMessage,
+  wrongPassword,
 } from '../../utils/constants';
-import { setEmailTakenAction } from '../actions/authActions';
+import { setEmailTakenError, setPasswordError } from '../actions/authActions';
 
 export function* logInSaga({ payload }) {
   try {
@@ -22,9 +23,25 @@ export function* registerSaga({ payload }) {
     alert('Prosao register');
     const { data } = yield call(authService.login, payload);
     if (data.status === createdUserMessage) {
+      yield put(setEmailTakenError(false));
       history.push(PagePath.LOGIN);
     } else if (data.status === emailTaken) {
-      yield put(setEmailTakenAction());
+      yield put(setEmailTakenError(true));
+    }
+  } catch (error) {
+    console.log(error); /*eslint-disable-line*/
+  }
+}
+
+export function* changePasswordSaga({ payload }) {
+  try {
+    alert('Prosao change');
+    const { data } = yield call(authService.login, payload);
+    if (data.status === wrongPassword) {
+      yield put(setPasswordError(true));
+    } else {
+      yield put(setPasswordError(false));
+      history.push(PagePath.LOGIN);
     }
   } catch (error) {
     console.log(error); /*eslint-disable-line*/

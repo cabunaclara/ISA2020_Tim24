@@ -1,3 +1,5 @@
 export const LOG_IN = 'LOG_IN';
 export const REGISTER = 'REGISTER';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const SET_EMAIL_TAKEN_ERROR = 'SET_EMAIL_TAKEN_ERROR';
+export const SET_PASSWORD_ERROR = 'SET_PASSWORD_ERROR';

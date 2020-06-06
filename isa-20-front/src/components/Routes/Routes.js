@@ -6,6 +6,8 @@ import { PagePath } from '../../utils/constants';
 import HomePage from '../../containers/HomePage';
 import LoginPage from '../../containers/LoginPage';
 import RegisterPage from '../../containers/RegisterPage';
+import ChangePasswordPage from '../../containers/ChangePasswordPage';
+import authService from '../../services/AuthService';
 
 export const routes = [
   { path: PagePath.HOME, exact: true, authRequired: true, component: HomePage },
@@ -21,10 +23,23 @@ export const routes = [
     authRequired: false,
     component: LoginPage,
   },
+  {
+    path: PagePath.CHANGE_PASSWORD,
+    exact: true,
+    authRequired: true,
+    component: ChangePasswordPage,
+  },
 ];
 
-const renderComponent = (Component, authRequired, isAuthenticated, props) =>
-  !isAuthenticated && authRequired ? <LoginPage /> : <Component {...props} />;
+const renderComponent = (Component, authRequired, isAuthenticated, props) => {
+  if (!isAuthenticated && authRequired) {
+    return <LoginPage />;
+  } else if (isAuthenticated && !authService.getUser().verified) {
+    return <ChangePasswordPage />;
+  } else {
+    return <Component {...props} />;
+  }
+};
 
 const Routes = ({ isAuthenticated }) => {
   return (

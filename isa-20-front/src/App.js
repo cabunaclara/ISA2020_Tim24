@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Router history={history}>
       <div>
-        <Routes isAuthenticated={!!authService.getToken()} />
+        <Routes isAuthenticated={!!authService.getUser()} />
       </div>
     </Router>
   );
