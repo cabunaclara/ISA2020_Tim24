@@ -1,7 +1,10 @@
 import { all, takeLatest } from 'redux-saga/effects';
-import { LOG_IN } from '../actions/ActionTypes';
-import { logInSaga } from './authSaga';
+import { LOG_IN, REGISTER } from '../actions/ActionTypes';
+import { logInSaga, registerSaga } from './authSaga';
 
 export default function* rootSaga() {
-  yield all([takeLatest(LOG_IN, logInSaga)]);
+  yield all([
+    takeLatest(LOG_IN, logInSaga),
+    takeLatest(REGISTER, registerSaga),
+  ]);
 }

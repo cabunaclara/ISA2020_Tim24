@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { logInAction } from '../store/actions/authActions';
 import i18n from '../i18n/i18n';
 import Avatar from '@material-ui/core/Avatar';
@@ -9,11 +10,12 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { validateEmail, validatePassword } from '../utils/validators';
+import { PagePath } from '../utils/constants';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -62,7 +64,7 @@ const LoginPage = () => {
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <LockOpenIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             {i18n.t('auth.signIn')}
@@ -114,8 +116,10 @@ const LoginPage = () => {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {i18n.t('auth.dontHaveAnAccount')}
+                <Link variant="body2">
+                  <NavLink to={PagePath.REGISTER}>
+                    {i18n.t('auth.dontHaveAnAccount')}
+                  </NavLink>
                 </Link>
               </Grid>
             </Grid>

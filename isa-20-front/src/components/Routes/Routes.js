@@ -5,9 +5,22 @@ import NoMatch from './NoMatch';
 import { PagePath } from '../../utils/constants';
 import HomePage from '../../containers/HomePage';
 import LoginPage from '../../containers/LoginPage';
+import RegisterPage from '../../containers/RegisterPage';
 
 export const routes = [
   { path: PagePath.HOME, exact: true, authRequired: true, component: HomePage },
+  {
+    path: PagePath.REGISTER,
+    exact: true,
+    authRequired: false,
+    component: RegisterPage,
+  },
+  {
+    path: PagePath.LOGIN,
+    exact: true,
+    authRequired: false,
+    component: LoginPage,
+  },
 ];
 
 const renderComponent = (Component, authRequired, isAuthenticated, props) =>

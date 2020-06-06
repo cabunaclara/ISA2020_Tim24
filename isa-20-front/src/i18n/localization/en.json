@@ -3,11 +3,30 @@
     "email": "Email Address",
     "password": "Password",
     "signIn": "Sign In",
-    "dontHaveAnAccount": "Don't have an account? Sign Up"
+    "register": "Register",
+    "confirmPassword": "Confirm Password",
+    "phoneNumber": "Phone Number",
+    "city": "City",
+    "address": "Address",
+    "country": "Country",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "socialSecurityNumber": "Social Security Number",
+    "dontHaveAnAccount": "Don't have an account? Sign Up",
+    "alreadyHaveAnAccount": "Already have an account? Sign In"
   },
   "copyright": "ISA",
   "errorMessages": {
+    "emailTaken": "Email Address is already taken, please choose another one",
     "email": "Email Address must be an email",
-    "password": "Password must be at least 6 characters long"
+    "password": "Password must be at least 6 characters long",
+    "confirmedPassword": "Password and confirmed password must be identical",
+    "firstName": "First name must be at least 2 characters long",
+    "lastName": "Last name must be at least 2 characters long",
+    "city": "City field cannot be empty",
+    "country": "Country field cannot be empty",
+    "address": "Address field cannot be empty",
+    "phoneNumber": "Phone number field must be a valid phone number",
+    "socialSecurityNumber": "Social security number field cannot be empty"
   }
 }
