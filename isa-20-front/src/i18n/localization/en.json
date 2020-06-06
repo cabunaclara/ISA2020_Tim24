@@ -2,6 +2,7 @@
   "auth": {
     "email": "Email Address",
     "oldPassword": "Old Password",
+    "changePassword": "Change Password",
     "password": "Password",
     "signIn": "Sign In",
     "register": "Register",

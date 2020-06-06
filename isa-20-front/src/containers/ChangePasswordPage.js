@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {
-  logInAction,
-  changePasswordAction,
-} from '../store/actions/authActions';
+import { changePasswordAction } from '../store/actions/authActions';
 import i18n from '../i18n/i18n';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -13,15 +10,11 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {
-  validateEmail,
-  validatePassword,
-  validateConfirmPassword,
-} from '../utils/validators';
+import { validatePassword, validateConfirmPassword } from '../utils/validators';
 import { PagePath } from '../utils/constants';
 import { makeSelectPasswordError } from '../store/selectors/userSelector';
 
@@ -78,10 +71,10 @@ const ChangePasswordPage = () => {
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOpenIcon />
+            <VpnKeyIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {i18n.t('auth.signIn')}
+            {i18n.t('auth.changePassword')}
           </Typography>
           <form
             className={classes.form}
@@ -142,7 +135,7 @@ const ChangePasswordPage = () => {
               color="primary"
               className={classes.submit}
             >
-              {i18n.t('auth.signIn')}
+              {i18n.t('auth.changePassword')}
             </Button>
             <Grid container>
               <Grid item>
