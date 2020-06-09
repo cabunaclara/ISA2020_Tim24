@@ -8,6 +8,7 @@ import LoginPage from '../../containers/LoginPage';
 import RegisterPage from '../../containers/RegisterPage';
 import ChangePasswordPage from '../../containers/ChangePasswordPage';
 import authService from '../../services/AuthService';
+import UpdateProfilePage from '../../containers/UpdateProfilePage';
 
 export const routes = [
   { path: PagePath.HOME, exact: true, authRequired: true, component: HomePage },
@@ -28,6 +29,12 @@ export const routes = [
     exact: true,
     authRequired: true,
     component: ChangePasswordPage,
+  },
+  {
+    path: PagePath.UPDATE_USER,
+    exact: true,
+    authRequired: true,
+    component: UpdateProfilePage,
   },
 ];
 

@@ -4,6 +4,7 @@ import {
   SET_EMAIL_TAKEN_ERROR,
   SET_PASSWORD_ERROR,
   CHANGE_PASSWORD,
+  UPDATE_USER_PROFILE,
 } from './ActionTypes';
 
 export const logInAction = (payload) => ({ type: LOG_IN, payload });
@@ -22,5 +23,10 @@ export const setEmailTakenError = (payload) => ({
 
 export const setPasswordError = (payload) => ({
   type: SET_PASSWORD_ERROR,
+  payload,
+});
+
+export const updateUserProfile = (payload) => ({
+  type: UPDATE_USER_PROFILE,
   payload,
 });
