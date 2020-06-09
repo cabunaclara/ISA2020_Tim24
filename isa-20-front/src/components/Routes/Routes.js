@@ -9,6 +9,7 @@ import RegisterPage from '../../containers/RegisterPage';
 import ChangePasswordPage from '../../containers/ChangePasswordPage';
 import authService from '../../services/AuthService';
 import UpdateProfilePage from '../../containers/UpdateProfilePage';
+import NavBar from '../Shared/NavBar';
 
 export const routes = [
   { path: PagePath.HOME, exact: true, authRequired: true, component: HomePage },
@@ -44,7 +45,12 @@ const renderComponent = (Component, authRequired, isAuthenticated, props) => {
   } else if (isAuthenticated && !authService.getUser().verified) {
     return <ChangePasswordPage />;
   } else {
-    return <Component {...props} />;
+    return (
+      <>
+        <NavBar position="fixed" />
+        <Component {...props} />
+      </>
+    );
   }
 };
 

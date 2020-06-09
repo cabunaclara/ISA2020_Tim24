@@ -1,6 +1,7 @@
 {
   "auth": {
     "email": "Email Address",
+    "logout": "Logout",
     "oldPassword": "Old Password",
     "changePassword": "Change Password",
     "newPassword": "New Password",
@@ -33,5 +34,6 @@
     "address": "Address field cannot be empty",
     "phoneNumber": "Phone number field must be a valid phone number",
     "socialSecurityNumber": "Social security number field cannot be empty"
-  }
+  },
+  "common": { "profile": "profile" }
 }
